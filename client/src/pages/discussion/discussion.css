@@ -1,0 +1,24 @@
+.discussion{
+    display: flex;
+    flex-wrap:nowrap;
+    margin: 20px;
+}
+
+.discussion h1{
+  font-family: 'Playfair Display', serif;
+  }
+
+.discussion p{
+    color: #666;
+  font-size: 18px;
+  line-height: 25px;
+  font-family: 'Times New Roman';
+  }
+
+  .discussion-heading{
+    align-self: center;
+    display: flex;
+    margin-left: 25%;
+    font-size: 50px;
+    font-family: 'Playfair Display', serif;
+  }
