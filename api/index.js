@@ -14,6 +14,8 @@ dotenv.config();
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
+
+const PORT=process.env.PORT || 5000;
 mongoose
   .connect("mongodb+srv://keshavpunia:punia1508@cluster0.gapev.mongodb.net/design_credit?retryWrites=true&w=majority", {
     useNewUrlParser: true,
@@ -44,6 +46,17 @@ app.use("/api/posts", postRoute);
 app.use("/api/comments", commentRoute);
 app.use("/api/categories", categoryRoute);
 
-app.listen("5000", () => {
+
+if(process.env.NODE_ENV=="production")
+{
+  app.use(express.static("client/build"));
+  const path=require("path");
+  app.get("*",(req,res)=>{
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+  })
+}
+
+
+app.listen(PORT, () => {
   console.log("Backend is running.");
 });
